@@ -7,7 +7,7 @@ public class StateCensusAnalyser_test {
 
     private static final String csvPath ="C:\\Users\\Ibrahim\\IdeaProjects\\State\\target\\IndiaStateCensusData.csv";
     private static final String csvWrongPath ="C:\\Users\\Ibrahim\\IdeaProjects\\State\\target2\\IndiaStateCensusData.csv";
-
+    private static final String pdfPath = "C:\\Users\\Ibrahim\\IdeaProjects\\State\\target\\certificate (1).pdf";
     @Test
     public void givenCensusCsvFile_returnCorrectRecords() throws IOException, CensusAnalyserException {
         StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
@@ -26,5 +26,18 @@ public class StateCensusAnalyser_test {
             assertEquals(CensusAnalyserException.ExceptionType.Csv_File_Problem, e.type);
         }
     }
+    @Test
+    public void given_IndiaCensusData_WithWrongFile_ShouldThrewException() throws IOException {
+        try {
+            StateCensusAnalyser censusAnalyZer = new StateCensusAnalyser();
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(CensusAnalyserException.class);
+            censusAnalyZer.LoadIndiaCensusData(pdfPath);
+        } catch(CensusAnalyserException e) {
+            assertEquals(CensusAnalyserException.ExceptionType.Unable_To_Parse, e.type);
+        }
+    }
+    
+
 
 }

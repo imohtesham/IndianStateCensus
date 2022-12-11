@@ -31,6 +31,9 @@ public class StateCensusAnalyser {
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.Csv_File_Problem);
+        }catch (IllegalStateException e) {
+            throw new CensusAnalyserException(e.getMessage(),
+                    CensusAnalyserException.ExceptionType. Unable_To_Parse);
         }
     }
 

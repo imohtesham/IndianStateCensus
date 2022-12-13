@@ -12,8 +12,4 @@ public class CensusAnalyserException extends Exception {
         this.type = type;
     }
 
-    public CensusAnalyserException( ExceptionType type, String message, Throwable cause) {
-        super(message, cause);
-        this.type = type;
-    }
 }

@@ -7,7 +7,9 @@ public class StateCensusAnalyser_test {
 
     private static final String csvPath ="C:\\Users\\Ibrahim\\IdeaProjects\\State\\target\\IndiaStateCensusData.csv";
     private static final String csvWrongPath ="C:\\Users\\Ibrahim\\IdeaProjects\\State\\target2\\IndiaStateCensusData.csv";
-    private static final String pdfPath = "C:\\Users\\Ibrahim\\IdeaProjects\\State\\target\\certificate (1).pdf";
+    private static final String pdfPath = "C:\\Users\\Ibrahim\\IdeaProjects\\State\\target\\certificat.pdf";
+
+  // TC 1
     @Test
     public void givenCensusCsvFile_returnCorrectRecords() throws IOException, CensusAnalyserException {
         StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
@@ -15,6 +17,7 @@ public class StateCensusAnalyser_test {
         assertEquals(29,recordsNumb);
     }
 
+//TC 2
     @Test
     public void given_IndiaCensusData_CsvFile_ShouldThrowException() throws IOException {
         try {
@@ -26,6 +29,8 @@ public class StateCensusAnalyser_test {
             assertEquals(CensusAnalyserException.ExceptionType.Csv_File_Problem, e.type);
         }
     }
+
+   // TC 3
     @Test
     public void given_IndiaCensusData_WithWrongFile_ShouldThrewException() throws IOException {
         try {
@@ -37,6 +42,7 @@ public class StateCensusAnalyser_test {
             assertEquals(CensusAnalyserException.ExceptionType.Unable_To_Parse, e.type);
         }
     }
+    //TC 4-5
     @Test
     public void given_IndiaCensusData_WithWrongDelimeter_ShouldThrowException() throws IOException {
         try {

@@ -12,7 +12,6 @@ import com.opencsv.exceptions.CsvValidationException;
 
 public class StateCensusAnalyser {
 
-    public String csvPath;
     public StateCensusAnalyser() {}
 
     public static int LoadIndiaCensusData(String csvPath) throws IOException, CensusAnalyserException   {
@@ -29,12 +28,14 @@ public class StateCensusAnalyser {
             int entries = 0;
             while(censusCSVIterator.hasNext()) {
                 entries++;
-                IndianCensusCSV censusData = censusCSVIterator.next();
+                IndianCensusCSV cd = censusCSVIterator.next();
             }
             return entries;
+            //TC 2
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.Csv_File_Problem);
+            //TC 3-5
         }catch (IllegalStateException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType. Unable_To_Parse);
@@ -46,8 +47,7 @@ public class StateCensusAnalyser {
         try {
             reader = new CSVReader(new FileReader(csvPath));
 
-            String [] nextLine;
-            while((nextLine=reader.readNext()) != null) {
+            while(reader.readNext() != null) {
                 return true;
             }
             if(reader != null) {
